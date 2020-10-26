@@ -3,22 +3,26 @@ posGoutteY = 0
 nbrGoutte = 10000
 listG = []
 i = 0
+l = 0
 
 def setup():
-    size(600,400)
+    size(1920,1080)
     clear()
     createList()
     frameRate(30)
     
 def draw():
-    global listG,nbrGoutte,i
+    global listG,nbrGoutte,i, l
     clear()    
     #drawGoutte()
     listG.append(Goutte())
-    while i > -1:
-        listG[i].fall()
-        listG[i].getOnScreen()
-        print("une goutte")
+    while l <= i :
+        listG[l].fall()
+        listG[l].getOnScreen()
+        l = l+1
+    i = i+1
+    l = 0
+    print("une goutte")
     
 
 # def drawGoutte():
@@ -38,11 +42,11 @@ def createList():
             
 class Goutte():
     def __init__(self):
-        self.xSize = 10
+        self.xSize = random(5,10)
         self.ySize = 50
         self.xPos = random(0+self.xSize, width-self.xSize)
-        self.yPos = random(-100,0)
-        self.fallSpeed = random(5,10)
+        self.yPos = random(-100,-10)
+        self.fallSpeed = self.xSize * 1.5
         
     def define(self):
         print('xSize  =',self.xSize, 'ySize  =',self.ySize, 'xPos  =',self.xPos, 'yPos  =',self.yPos)
@@ -51,5 +55,5 @@ class Goutte():
         self.yPos += self.fallSpeed
             
     def getOnScreen(self):
-        fill(0,125,255)
+        fill(110,3,177)
         rect(self.xPos,self.yPos,self.xSize,self.ySize)
