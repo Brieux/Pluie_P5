@@ -6,7 +6,7 @@ i = 0
 l = 0
 
 def setup():
-    size(1920,1080)
+    fullScreen()
     clear()
     createList()
     frameRate(30)
@@ -42,11 +42,11 @@ def createList():
             
 class Goutte():
     def __init__(self):
-        self.xSize = random(5,10)
-        self.ySize = 50
+        self.xSize = random(5,12)
+        self.ySize = self.xSize * 8
         self.xPos = random(0+self.xSize, width-self.xSize)
         self.yPos = random(-100,-10)
-        self.fallSpeed = self.xSize * 1.5
+        self.fallSpeed = self.xSize * 2.5
         
     def define(self):
         print('xSize  =',self.xSize, 'ySize  =',self.ySize, 'xPos  =',self.xPos, 'yPos  =',self.yPos)
